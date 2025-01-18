@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun Facts App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .fact-display {
+            margin: 20px 0;
+            font-size: 1.2em;
+            color: #555;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 80%;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Random Fun Fact</h1>
+        <div id="factDisplay" class="fact-display">Click the button to see a fun fact!</div>
+        <button id="generateFactBtn">Generate Fun Fact</button>
+        
+        <h2>Add Your Own Fun Fact</h2>
+        <input type="text" id="newFactInput" placeholder="Enter your fun fact here">
+        <button id="addFactBtn">Add Fun Fact</button>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const facts = [
+                "The Rubik's Cube was invented in 1974 by Ernő Rubik, a Hungarian architect and professor.",
+                "Originally called the 'Magic Cube', it was renamed to 'Rubik's Cube' in 1980.",
+                "There are 43 quintillion possible configurations of a Rubik's Cube.",
+                "The world record for solving a 3x3x3 Rubik's Cube is 3.47 seconds, set by Yusheng Du in 2018.",
+                "The Rubik's Cube is considered the world's best-selling puzzle game, with over 350 million units sold.",
+                "A standard Rubik's Cube has six faces, each with nine stickers of one of six solid colors.",
+                "The term 'God's Number' refers to the minimum number of moves required to solve a Rubik's Cube from any position, which is 20.",
+                "The first Rubik's Cube World Championship was held in Budapest in 1982.",
+                "There are numerous variations of the Rubik's Cube, including 2x2x2, 4x4x4, and even 17x17x17 cubes.",
+                "The Rubik's Cube has inspired a competitive sport known as 'speedcubing', where participants compete to solve the cube in the shortest time possible."
+            ];
+
+            const factDisplay = document.getElementById('factDisplay');
+            const generateFactBtn = document.getElementById('generateFactBtn');
+            const addFactBtn = document.getElementById('addFactBtn');
+            const newFactInput = document.getElementById('newFactInput');
+
+            generateFactBtn.addEventListener('click', () => {
+                const randomIndex = Math.floor(Math.random() * facts.length);
+                factDisplay.textContent = facts[randomIndex];
+            });
+
+            addFactBtn.addEventListener('click', () => {
+                const newFact = newFactInput.value.trim();
+                if (newFact) {
+                    facts.push(newFact);
+                    newFactInput.value = '';
+                    alert('Your fun fact has been added!');
+                } else {
+                    alert('Please enter a valid fun fact.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
